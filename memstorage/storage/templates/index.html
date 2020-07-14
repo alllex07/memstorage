@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>MemsStore by Alexander</h1>
+  <p>mems:</p>
+ <!--  	<div style="position: absolute; position: relative;">
+	  	{% for mem in mems %}
+			<div class="alert alert-primary" role="alert" style="position:absolute;bottom:0;right:0;">
+				{{mem.text}}
+			</div>
+		{% endfor %}	
+  	</div> -->
+  	{% for mem in mems %}
+	<div class="list-group" style="flex-direction: column; max-width: 800px; margin-bottom:20px">
+		<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	    	<h5 class="mb-1" style="max-width: 600px;">{{mem.text}}</h5>
+	    	<small>{{mem.date}}</small>
+	    </div>
+	    <small>Tags: 
+	    	{% for tag in mem.tags.all %}
+	    		{{tag.text}}
+	    		{% if not forloop.last %}, {% endif %}
+	    	{% endfor %}
+		</small>
+	  	</a>
+	 </div>
+	 {% endfor %}
+{% endblock %}
